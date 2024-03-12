@@ -8,8 +8,9 @@ import plotly.io as pio
 from datetime import datetime, timedelta
 
 
-pio.templates.default = 'seaborn'
 st.set_page_config(layout="wide")
+pio.templates.default = 'seaborn'
+
 
 symbol = st.sidebar.text_input('Enter stock symbol:', 'BTC-USD').upper()
 second_symbol = st.sidebar.text_input('Enter second stock symbol:', 'ETH-USD').upper()
@@ -59,7 +60,7 @@ if symbol and second_symbol:
         fig2.add_trace(go.Scatter(x=hist3['Date'], y=hist3['Close'], mode='lines', name=f'{second_symbol}', yaxis='y2'))
 
         # Add vertical line for the halving event
-        fig2.add_vline(x=halving_2020.strftime('%Y-%m-%d'), line_width=2, line_dash="dash", line_color="white", name="Halving", showlegend=True)
+        fig2.add_vline(x=halving_2020.strftime('%Y-%m-%d'), line_width=2, line_dash="dash", line_color="cyan", name="Halving", showlegend=True)
         fig2.add_vline(x=covid_drop.strftime('%Y-%m-%d'), line_width=2, line_dash="dash", line_color="red", name="cov_crash", showlegend=True)
 
         fig2.update_layout(
@@ -87,7 +88,7 @@ if symbol and second_symbol:
         fig3 = go.Figure()
         fig3.add_trace(go.Scatter(x=hist_2024_1['Date'], y=hist_2024_1['Close'], mode='lines', name=f'{symbol}'))
         fig3.add_trace(go.Scatter(x=hist_2024_2['Date'], y=hist_2024_2['Close'], mode='lines', name=f'{second_symbol}', yaxis='y2'))
-        fig3.add_vline(x=halving_2024.strftime('%Y-%m-%d'), line_width=2, line_dash="dash", line_color="white", name="Halving", showlegend=True)
+        fig3.add_vline(x=halving_2024.strftime('%Y-%m-%d'), line_width=2, line_dash="dash", line_color="cyan", name="Halving", showlegend=True)
         fig3.update_layout(
         		height=600,
 	            title='Current Halving, April 2024',
